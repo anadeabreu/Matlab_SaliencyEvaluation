@@ -9,17 +9,17 @@ scores_imagesB = [];
 scores_imagesJ = [] ;
 scores_imagesS = [] ;
 scoresNSS_images = [] ;
-
+rrr
 for i=1: size(image_names,2)
     
 
 
     %imgG2 = imread('C:\Users\Ana\Code\webvr-samples-master\panorama-viewer-master\Saliency\10s\bwGroupSaliency_The_Porch.jpg'); % Ground Truth
-    FixG = imread(['C:\Users\Ana\Code\webvr-samples-master\panorama-viewer-master\Saliency\10s\GroupFix_' image_names{1,i} '_0.jpg']); % Ground Truth
-    otherMap = imread('C:\Users\Ana\Code\webvr-samples-master\panorama-viewer-master\Saliency\10s\GroupFix_indoor6_0.jpg');
+    FixG = imread(['C:\Users\Ana\Code\webvr-samples-master\panorama-viewer-master\Saliency\10s\Fixations\GroupFix_' image_names{1,i} '_0.jpg']); % Ground Truth
+    otherMap = imread('C:\Users\Ana\Code\webvr-samples-master\panorama-viewer-master\Saliency\10s\Fixations\GroupFix_indoor6_0.jpg');
 
-    %imgP = imread('C:\Users\Ana\Code\Images\QoMex\Salicon\mergedSaliency_outdoor5.jpg');
-    imgP = imread(['C:\Users\Ana\Code\Images\QoMex\Salicon\mergedSaliency_' image_names{1,i} '.jpg']);
+    %imgP = imread(['C:\Users\Ana\Code\Images\QoMex\Judd\' image_names{1,i} '_merged3_sal.jpg']);
+    imgP = imread(['C:\Users\Ana\Code\Images\QoMex\Judd\mergedSaliency_' image_names{1,i} '.jpg']);
 
     %imgP = rgb2gray(imgP);
     imgP = mat2gray(imgP);
@@ -60,13 +60,13 @@ for i=1: size(image_names,2)
     length(fpB)
     
     while (length(fpB)<102)
-        fpB = [fpB; 1]
-        tpB = [tpB; 1]
+        fpB = [fpB; 1];
+        tpB = [tpB; 1];
     end
     
     % Using Borji for the plot
-    fpB'
-    tpB'
+%     fpB'
+%     tpB'
     fprB_images = [fprB_images; fpB(1:102)'];
     tprB_images = [tprB_images; tpB(1:102)'];
     scores_imagesB = [scores_imagesB scoreB] ;
@@ -75,12 +75,19 @@ for i=1: size(image_names,2)
     scoresNSS_images = [scoresNSS_images scoreNSS] ;
 end
 
- fprB_images = mean(fprB_images)
- tprB_images = mean(tprB_images)
-% scores_imagesB
-% scores_imagesJ
-% scores_imagesS
-% scoresNSS_images
+ fprB_images = mean(fprB_images);
+ fprB_string = sprintf('%.4f,' , fprB_images)
+ tprB_images = mean(tprB_images);
+ tprB_string = sprintf('%.4f,' , tprB_images)
+ scoresB_string = sprintf('%.4f,' , scores_imagesB)
+ mean(scores_imagesB)
+ scoresJ_string = sprintf('%.4f,' , scores_imagesJ)
+ mean(scores_imagesJ)
+ scoresS_string = sprintf('%.4f,' , scores_imagesS)
+ mean(scores_imagesS)
+ scoresNSS_string = sprintf('%.4f,' , scoresNSS_images)
+ mean(scoresNSS_images)
+
  
 % meanAUC
 % meanNSS
